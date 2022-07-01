@@ -1,0 +1,25 @@
+<templateSet group="alterationx10">
+  <template name="zio-json-codec" value="implicit val codec: JsonCodec[$type$] = DeriveJsonCodec.gen[$type$]" description="Generates a JsonCodec[T] inside when inside the companion object T" toReformat="true" toShortenFQNames="true">
+    <variable name="type" expression="substringBefore(className(), &quot;$&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="SCALA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="zio-json-codec-enum" value="val zEncoder: JsonEncoder[$type$]     = JsonEncoder[String].contramap(_.toString)&#10;val zDecoder: JsonDecoder[$type$]     = JsonDecoder[String].map($type$.withName)&#10;implicit val codec: JsonCodec[$type$] = JsonCodec[$type$](zEncoder, zDecoder)" description="Generates a JsonCodec[T] inside when inside the enum object T" toReformat="true" toShortenFQNames="true">
+    <variable name="type" expression="substringBefore(className(), &quot;$&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="SCALA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="zio-for-comp" value="for {&#10;  _ &lt;- ZIO.attempt(???)&#10;} yield ???" description="Templates out a ZIO for-comprehension" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="SCALA" value="true" />
+    </context>
+  </template>
+  <template name="zio-json-quill-mapped-encoding" value="implicit val mappedEncoding: MappedEncoding[$type$, Json] = MappedEncoding[$type$, Json](r =&gt; r.toJsonAST match {&#10;  case Left(msg) =&gt; throw new Exception(msg)&#10;  case Right(json) =&gt; json&#10;})&#10;implicit val mappedDecoding: MappedEncoding[Json, $type$] = MappedEncoding[Json, $type$](r =&gt; r.as[$type$] match {&#10;  case Left(msg) =&gt; throw new Exception(msg)&#10;  case Right(json) =&gt; json&#10;})" description="Generates a Quill mapped encoding to/from ZIO Json" toReformat="true" toShortenFQNames="true">
+    <variable name="type" expression="substringBefore(className(), &quot;$&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="SCALA_CODE" value="true" />
+    </context>
+  </template>
+</templateSet>
