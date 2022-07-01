@@ -5,9 +5,10 @@ This repo has some Live Templates I use in IntelliJ Idea for ZIO stuff.
 It seems to be that the best way to share live templates is to
 [copy a file over](https://www.jetbrains.com/help/idea/sharing-live-templates.html)
 
-Put the file in the `templates` folder from the config folder of Idea. See
+Put the `alterationx10.xml` file in the `templates` folder from the config
+folder of Idea. See
 [this link](https://www.jetbrains.com/help/idea/directories-used-by-the-ide-to-store-settings-caches-plugins-and-logs.html#config-directory)
-for where your config folder is:
+for where your config folder is.
 
 ## Live templates provided
 
